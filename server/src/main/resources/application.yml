@@ -1,0 +1,65 @@
+# Number of minutes
+demo.security.jwt:
+  tokenExpirationTime: 3600
+  # Minutes
+  refreshTokenExpTime: 3600
+  tokenIssuer: http://svlada.com
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+
+endpoints.shutdown:
+  enabled: true
+  sensitive: false
+
+spring:
+  profiles.active: default
+---
+spring:
+  profiles: prod
+server:
+  port: 5071
+spring.gm.datasource:
+      url: jdbc:mysql://127.0.0.1:3306/gmadmin
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      testOnBorrow: true
+      validationQuery: select 1
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 1800000
+      minIdle: 1
+spring.payment.datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/cx_payment
+      username: root
+      password: root
+      testOnBorrow: true
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 1800000
+      minIdle: 1
+---
+spring:
+  profiles: default
+server:
+    port: 9966
+spring.gm.datasource:
+    url: jdbc:mysql://localhost:3306/gmadmin
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 1800000
+    minIdle: 1
+
+spring.payment.datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/cx_payment
+    username: root
+    password: root
+    testOnBorrow: true
+    validationQuery: select 1
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 1800000
+    minIdle: 1
